@@ -18,24 +18,35 @@ def vizspectrum(dataframe: Type[pd.DataFrame]):
     the darkest color sets the benchmark
     '''
 
-    colors = [] # the initial array having all the column colors as black
+    colors = []  # the initial array having all the column colors as black
 
     for i, cols in enumerate(dataframe.columns):
         prec = dataframe[cols].isna().mean()
         shade = int(255 * prec)  # Calculate shade based on missing percentage
         color = f'rgb({shade}, {shade}, {shade})'
         colors.append({'color': color, 'opacity': 1-prec})
-    
 
     fig = go.Figure(data=[go.Bar(
         x=dataframe.columns,
         y=dataframe.notna().sum(),
         marker_color=[color['color'] for color in colors],
         marker=dict(opacity=[color['opacity'] for color in colors]),
-        name= 'missing data spectrum visualizer'
+        name='missing data spectrum visualizer'
     )])
 
-    fig.update_layout(title='Missing Data Spectrum', xaxis_title='Columns', yaxis_title='Non-Null Count')
-    
+    fig.update_layout(title='Missing Data Spectrum',
+                      xaxis_title='Columns', yaxis_title='Non-Null Count')
+
     fig.show()
 
+    return fig
+
+
+def main():
+    df = pd.read_csv(
+        'D:/my_projects/vizmiz-missing-value-visualizer/data/baby_names.csv')
+    vizspectrum(df)
+
+
+if __name__ == '__main__':
+    main()
