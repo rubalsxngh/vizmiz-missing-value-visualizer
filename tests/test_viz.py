@@ -1,4 +1,4 @@
-from src.vizmiz import viz
+from src.mizviz import viz
 import plotly.graph_objects as go
 import pandas as pd
 

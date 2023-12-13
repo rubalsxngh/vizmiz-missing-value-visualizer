@@ -1,4 +1,4 @@
-# vizmiz-missing-value-visualizer
+# mizviz-missing-value-visualizer
 VizMiz is a Python library for visualizing missing data in pandas DataFrames.
 
 ## Installation
@@ -6,7 +6,7 @@ VizMiz is a Python library for visualizing missing data in pandas DataFrames.
 You can install VizMiz using pip:
 
    ```bash
-   pip install vizmiz
+   pip install -i https://test.pypi.org/simple/ mizviz==0.0.1
    ```
 
 ## Usage
@@ -14,8 +14,10 @@ You can install VizMiz using pip:
 Use the vizspectrum function to visualize missing data:
 
    ```bash
+   import pandas as pd
+   from mizviz import viz
    df = pd.read_csv('path/to/your/data.csv')
-   vizspectrum(df)
+   viz.vizspectrum(df)
    ```
 
 ## Features
