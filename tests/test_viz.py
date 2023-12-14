@@ -1,5 +1,6 @@
 from src.mizviz import viz
 import plotly.graph_objects as go
+import plotly.express as px
 import pandas as pd
 
 import unittest
@@ -13,3 +14,13 @@ class test_spec_visualizer(unittest.TestCase):
         '''
         
         self.assertIsInstance(viz.vizspectrum(df), go.Figure)
+
+
+class test_bar_visulaizer(unittest.TestCase):
+    def test_bar(self):
+        df= pd.read_csv('D:/my_projects/vizmiz-missing-value-visualizer/data/baby_names.csv')
+        '''
+        this test use sample dataset from /data repo, can replace it with you own
+        '''
+
+        self.assertIsInstance(viz.vizbar(df), go.Figure)

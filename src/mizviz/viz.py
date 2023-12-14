@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 import numpy as np
 import seaborn as sns
 from typing import Type
@@ -36,6 +37,49 @@ def vizspectrum(dataframe: Type[pd.DataFrame]):
 
     fig.update_layout(title='Missing Data Spectrum',
                       xaxis_title='Columns', yaxis_title='Non-Null Count')
+
+    fig.show()
+
+    return fig
+
+
+def vizbar(dataframe: Type[pd.DataFrame], vizmode='missing'):
+    '''
+    vizbar is a simple bar chart to visualize missing or actual values.
+
+    Parameters:
+    - dataframe (pd.DataFrame): The DataFrame to visualize.
+    - vizmode (str, optional): Visualization mode, either 'missing' or 'actual'. Defaults to 'missing'.
+
+    Returns:
+    - fig (plotly.graph_objects.Figure): The Plotly figure object.
+
+    '''
+
+    column_count= {}
+
+
+    for col in dataframe.columns:
+        count=0
+        if vizmode== 'missing':
+            count= dataframe[col].isna().sum()
+        elif vizmode== 'actual':
+            count= dataframe[col].notna().sum()
+        
+        column_count[col]= count
+
+    
+    df= pd.DataFrame(list(column_count.items()), columns= ['column', 'count'])
+    total_values= dataframe.shape[0]-1
+
+    fig= px.bar(df,
+                x= 'column',
+                y= 'count',
+                title= f"bar graph for count of {'missing' if vizmode== 'missing' else 'actual'} values. \n Total Values: {total_values}",
+                labels= {'x': 'Columns', 'y': f"count of {'missing' if vizmode== 'missing' else 'actual'}"},
+                color= 'count',
+                color_continuous_scale='Blues',
+    )
 
     fig.show()
 
