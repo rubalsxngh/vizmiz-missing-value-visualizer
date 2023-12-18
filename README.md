@@ -36,6 +36,15 @@ Use the vizbar function to visualize missing or actual( non-missing data) using 
    viz.vizbar(df, 'actual') #create a bar graph for actual values
    ```
 
+Use the heatmap function to visualize missing data using a heatmap:
+
+   ```
+   import pandas as pd
+   from mizviz import viz
+   df = pd.read_csv('path/to/your/data.csv')
+   viz.heatmap(df) #create a heatmap: more white the heatmap is, more missing values dataframe contains
+   ```
+
 ## Features
 
 - Color spectrum visualization for missing values
