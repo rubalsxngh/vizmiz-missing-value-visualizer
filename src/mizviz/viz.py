@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 import seaborn as sns
+import matplotlib.pyplot as plt
 from typing import Type
 
 
@@ -82,6 +83,34 @@ def vizbar(dataframe: Type[pd.DataFrame], vizmode='missing'):
     )
 
     fig.show()
+
+    return fig
+
+
+def heatmap(dataframe: Type[pd.DataFrame]):
+
+    """
+    Generates a heatmap using Plotly to visualize missing values in a DataFrame.
+
+    Parameters:
+    - dataframe (pd.DataFrame): The DataFrame to visualize.
+
+    Returns:
+    - fig: a matplotlib Figure.
+
+    visualize: The more white the heatmap-> more the missing values in dataframe.
+    - a white bar in heatmap means that cell has missing value.
+    """
+     
+    null_mask= dataframe.notna()
+
+    ax= sns.heatmap(null_mask, cmap='binary', cbar=False, annot=False)
+    plt.title('Missing Values Heatmap, white displays missing values')
+    plt.xlabel('Columns')
+    plt.ylabel('Rows')
+    plt.show()
+
+    fig = ax.get_figure()
 
     return fig
 
