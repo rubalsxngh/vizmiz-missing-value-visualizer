@@ -52,6 +52,7 @@ Use the vdendrogram function to visualize missing data using a dendogram:
    from mizviz import viz
    df = pd.read_csv('path/to/your/data.csv')
    viz.vdendrogram(df) #create a dendrogram: provides co-relation between columns considering missing values
+   ```
 
 
 ## Features
