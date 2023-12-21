@@ -23,7 +23,8 @@ Use the vizspectrum function to visualize missing data:
    import pandas as pd
    from mizviz import viz
    df = pd.read_csv('path/to/your/data.csv')
-   viz.vizspectrum(df)
+   fig= viz.vizspectrum(df)
+   fig.show()
    ```
 
 Use the vizbar function to visualize missing or actual( non-missing data) using simple bar:
@@ -32,8 +33,10 @@ Use the vizbar function to visualize missing or actual( non-missing data) using 
    import pandas as pd
    from mizviz import viz
    df = pd.read_csv('path/to/your/data.csv')
-   viz.vizbar(df, 'missing') #create a bar graph for missing values( default)
-   viz.vizbar(df, 'actual') #create a bar graph for actual values
+   fig= viz.vizbar(df, 'missing') #create a bar graph for missing values( default)
+   fig= viz.vizbar(df, 'actual') #create a bar graph for actual values
+
+   fig.show()
    ```
 
 Use the heatmap function to visualize missing data using a heatmap:
@@ -52,6 +55,7 @@ Use the vdendrogram function to visualize missing data using a dendogram:
    from mizviz import viz
    df = pd.read_csv('path/to/your/data.csv')
    viz.vdendrogram(df) #create a dendrogram: provides co-relation between columns considering missing values
+   ```
 
 
 ## Features
