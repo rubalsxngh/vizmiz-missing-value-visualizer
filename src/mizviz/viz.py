@@ -40,7 +40,6 @@ def vizspectrum(dataframe: Type[pd.DataFrame]):
     fig.update_layout(title='Missing Data Spectrum',
                       xaxis_title='Columns', yaxis_title='Non-Null Count')
 
-    fig.show()
 
     return fig
 
@@ -82,7 +81,6 @@ def vizbar(dataframe: Type[pd.DataFrame], vizmode='missing'):
                  color_continuous_scale='Blues',
                  )
 
-    fig.show()
 
     return fig
 
